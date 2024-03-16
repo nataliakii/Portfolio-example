@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Portfolio from "./components/portfolio/Portfolio";
 import Services from "./components/services/Services";
+import Container from "@mui/material/Container"
 
 const App = () => {
   return (

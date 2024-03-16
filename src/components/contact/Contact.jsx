@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import axios from "axios"
 
 const variants = {
   initial: {
@@ -44,6 +45,29 @@ const Contact = () => {
           setError(true);
         }
       );
+  };
+
+  const sendTelegram = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    const formData = new FormData(formRef.current);
+
+    const data = {
+      chat_id: "-1001937157826",
+      table: `Portfolio request from: ${formData.get("name")}, ${formData.get("email")}`,
+      message: formData.get("message") || "",
+    };
+
+    axios
+      .post("https://button.hopto.org/button2607", data)
+      .then((result) => {
+        console.log(result.data);
+        setSuccess(true);
+      })
+      .catch((error) => {
+        console.error("Error sending message:", error);
+        setError(true);
+      });
   };
 
   return (
@@ -101,7 +125,7 @@ const Contact = () => {
         </motion.div>
         <motion.form
           ref={formRef}
-          onSubmit={sendEmail}
+          onSubmit={sendTelegram}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}

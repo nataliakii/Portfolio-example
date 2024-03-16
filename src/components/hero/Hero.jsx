@@ -1,5 +1,8 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import Container from "@mui/material/Container"
+
 
 const textVariants = {
   initial: {
@@ -39,8 +42,10 @@ const sliderVariants = {
 
 const Hero = () => {
   return (
+
     <div className="hero">
       <div className="wrapper">
+        <Container>
         <motion.div
           className="textContainer"
           variants={textVariants}
@@ -51,11 +56,17 @@ const Hero = () => {
           <motion.h1 variants={textVariants}>
             Web developer 
           </motion.h1>
+         
           <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>
+            {/* <motion.button variants={textVariants}>
               See the Latest Works
-            </motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
+            </motion.button> */}
+            <ScrollLink
+              to="Contact"
+                smooth={true}
+                duration={800}
+                spy={true}>
+            <motion.button variants={textVariants}>Contact Me</motion.button></ScrollLink>
           </motion.div>
           <motion.img
             variants={textVariants}
@@ -64,7 +75,14 @@ const Hero = () => {
             alt=""
           />
         </motion.div>
+      </Container>
       </div>
+          
+          <div className="imageContainer">
+          <img src="/hero6.png" alt="" />
+
+      
+
       {/* <motion.div
         className="slidingTextContainer"
         variants={sliderVariants}
@@ -73,10 +91,12 @@ const Hero = () => {
       >
         WEB DEVELOPMENT
       </motion.div> */}
-      <div className="imageContainer">
-        <img src="/hero.png" alt="" />
-      </div>
-    </div>
+
+
+         </div>
+         </div>
+
+      
   );
 };
 

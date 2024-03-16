@@ -37,7 +37,7 @@
     }
   }
   .titleContainer {
-    flex: 2;
+    flex: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,7 +96,7 @@
     }
   }
   .listContainer {
-    flex: 2;
+    flex: 1;
     display: flex;
     max-width: 1366px;
     margin: auto;

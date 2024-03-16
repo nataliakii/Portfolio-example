@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import "./services.scss";
 import { motion, useInView } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 const variants = {
   initial: {
@@ -22,6 +23,14 @@ const variants = {
 const Services = () => {
   const ref = useRef();
 
+  const handleClick = ( link ) =>
+  {
+    console.log("clicked")
+    window.open(link, '_blank', "noopener noreferrer");
+  };
+
+
+
   const isInView = useInView(ref, { margin: "-100px" });
 
   return (
@@ -29,30 +38,30 @@ const Services = () => {
       className="services"
       variants={variants}
       initial="initial"
-      // animate="animate"
-      // whileInView="animate"
+      animate="animate"
+      whileInView="animate"
       ref={ref}
-      animate={"animate"}
+      // animate={"animate"}
     >
       <motion.div className="textContainer" variants={variants}>
-        <p>
-          I focus on assisting you in maximizing your income potential
-          <br /> and moving forward
-        </p>
+        {/* <p>
+          I focus on assisting you in maximizing 
+          <br /> your income potential
+        </p> */}
         <hr />
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>
         <div className="title">
           <img src="/people.webp" alt="" />
           <h1>
-            <motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas
+            <motion.b whileHover={{color:"orange"}}>Innovative</motion.b>  Solutions
           </h1>
         </div>
         <div className="title">
           <h1>
-            <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Business.
+            <motion.b whileHover={{color:"orange"}}>For </motion.b> Modern Challenges.
           </h1>
-          <button>WHAT I DO?</button>
+          {/* <button>WHAT I DO?</button> */}
         </div>
       </motion.div>
       <motion.div className="listContainer" variants={variants}>
@@ -60,54 +69,55 @@ const Services = () => {
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>One</h2>
+          <h2>QR Menu</h2>
+                    <div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
+              A dynamic QR code-based menu system. 
+            </p>
+            <p>
+            Tech stack : React, Next.js, MongoDB, Vercel or Netlify.
+            </p>
+          </div>
+            <button onClick={handleClick("https://argo-beach.netlify.app/")}>Go </button>
+          <button onClick={ handleClick( "https://bloom-bar.netlify.app/" ) }>Go </button>
+              
         </motion.div>
         <motion.div
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>Two</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
+          <h2>CallWaiter</h2>
+          <div>
+            <p>
+              An innovative beach bar service solution for seamless staff - client coordination.
+            </p>
+            <p>
+              FrontEnd - React, React Context, Material-UI.
+            </p>
+                     <p>
+            Backend - Python on Amazon EC2. Deployed on Vercel.</p>
+          </div>
+          <button onClick={ handleClick( "https://www.bbqr.site/about" ) }>Go</button>
+                 <button onClick={ handleClick( "https://www.bbqr.site/restaurants/genesis?zont=1" ) }>Go</button>
         </motion.div>
         <motion.div
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>Three</h2>
+          <h2>Landing Pages</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
+              Expertise in building modern, responsive landing pages.
           </p>
-          <button>Go</button>
+          <button onClick={ handleClick( "https://www.mybridgehelper.com/" ) } >Go</button>
+           <button onClick={ handleClick( "https://sprincessluxury.netlify.app/" ) } >Go</button>
         </motion.div>
-        <motion.div
+        {/* <motion.div
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Four</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
+        > */}
+
+
+        {/* </motion.div> */}
       </motion.div>
     </motion.div>
   );

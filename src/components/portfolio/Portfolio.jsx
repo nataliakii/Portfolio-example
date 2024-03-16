@@ -5,28 +5,26 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const items = [
   {
     id: 1,
-    title: "QR Menu",
-    img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    title: "App for renting apartment",
+    img: "/apart.png",
+    desc: "Apartment Rental App. \n Built with React and Redux for efficient state management. \n Utilized MongoDB for storing and retrieving rental property data. Node.js and express - for backend. \n User authentication and authorization with JSON Web Tokens (JWT).\n Deployed on Heroku for reliable and scalable hosting",
+    url: "https://kalikratia.site/"
   },
   {
     id: 2,
-    title: "Buttons for calling waiter",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    title: "App for baby's sleep schedule",
+    img: "/sleepy.png",
+    desc: "The app is supposed to handle 3 functionalities: \n 1. Provide recommendations for a baby's sleep schedule after analyzing and processing input data.\n 2. Finding nearby playgrounds on an interactive map.\n 3. Locate nearby restaurants with kidsroom.",
+    url: "https://sleepy-app-5901632218e2.herokuapp.com/ "
   },
   {
     id: 3,
     title: "Other",
     img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "With over 10 years of experience as a video production producer, I bring proven expertise in project management, planning, budgeting, and strong communication skills crucial for delivering exceptional video productions.",
+    url : "https://www.linkedin.com/in/natalia-kirejeva/"
   },
-  {
-    id: 4,
-    title: "Other App",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-  },
+
 ];
 
 const Single = ({ item }) => {
@@ -36,7 +34,13 @@ const Single = ({ item }) => {
     target: ref,
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+  const y = useTransform( scrollYProgress, [ 0, 1 ], [ -300, 300 ] );
+  
+    const handleClick = ( link ) =>
+  {
+    console.log("clicked")
+    window.open(link, '_blank', "noopener noreferrer");
+  };
 
   return (
     <section >
@@ -48,7 +52,7 @@ const Single = ({ item }) => {
           <motion.div className="textContainer" style={{y}}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            { item?.url && <button onClick={ handleClick( item?.url ) }>See More</button> }
           </motion.div>
         </div>
       </div>
@@ -72,7 +76,7 @@ const Portfolio = () => {
   return (
     <div className="portfolio" ref={ref}>
       <div className="progress">
-        <h1>Featured Works</h1>
+        <h1>Previous works</h1>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>
       </div>
       {items.map((item) => (
